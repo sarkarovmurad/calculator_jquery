@@ -1,0 +1,15 @@
+{
+  "name": "project",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-newer": "^1.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.2.0"
+  },
+  "dependencies": {
+    "gulp-imagemin": "^2.4.0"
+  }
+}

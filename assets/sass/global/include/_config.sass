@@ -1,0 +1,96 @@
+// Конфигурация проекта
+// Описание всех переменных и миксинов проекта
+
+
+$font: arial, sans-serif
+
+
+
+// Цвета
+$grey1    : #BABABA
+
+
+
+
+// Миксины
+@mixin clearfix
+	&:after
+		content: ""
+		display: table
+		clear: both
+
+@mixin rotate($rotate)
+	transform: rotate($rotate+deg)
+
+@mixin beforeAfter()
+
+	&:before, &:after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		transition: opacity 0.3s linear
+
+	&:after
+		opacity: 0
+
+	&:hover
+
+		&:before
+			opacity: 0
+		&:after
+			opacity: 1
+
+@mixin grad($color1,$color2)
+	background: $color2
+	background: linear-gradient(to top,$color2,$color1)
+
+@mixin max-width($width)
+	@media only screen and (max-width: $width+px)
+		@content
+
+@mixin max-height($height)
+	@media only screen and (max-height: $height+px)
+		@content
+
+@mixin keyframes($animationName)
+	@-webkit-keyframes #{$animationName}
+		@content
+	@-moz-keyframes #{$animationName}
+		@content
+	@-o-keyframes #{$animationName}
+		@content
+	@keyframes #{$animationName}
+		@content
+
+
+
+// Преломления основные
+// ====================
+@mixin desktop()
+	@media only screen and (min-width: 961px)
+		@content
+
+@mixin desktop-small()
+	@media only screen and (max-width: 1200px) and (min-width: 961px)
+		@content
+
+@mixin desktop-big()
+	@media only screen and (min-width: 1201px)
+		@content
+
+@mixin tablet()
+	@media only screen and (max-width: 960px) and (min-width: 741px)
+		@content
+
+@mixin mobile()
+	@media only screen and (max-width: 740px)
+		@content
+
+@mixin desktop-tablet()
+	@media only screen and (min-width: 741px)
+		@content
+
+@mixin tablet-mobile()
+	@media only screen and (max-width: 960px)
+		@content

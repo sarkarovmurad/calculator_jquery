@@ -1,0 +1,420 @@
+@charset "UTF-8"
+
+*
+	outline: none
+
+body
+	width: 100%
+	height: 100%
+	font: 16px/140% $font
+	color: $grey1
+
+button
+	display: block
+	padding: 0
+	background: none
+	border: none
+	cursor: pointer
+
+
+
+.wrapper
+	display: table
+	margin: 0 auto
+	width: 100%
+	height: 100%
+
+	+desktop-tablet()
+		background: url('../../img/bg.jpg') repeat
+
+.container
+	display: table-cell
+	width: 100%
+	height: 100%
+	vertical-align: middle
+
+	+desktop-tablet()
+		padding: 10px 0
+
+
+.content
+	margin: 0 auto
+	height: 100%
+	max-height: 650px
+
+	+desktop-tablet()
+		padding: 10px
+		max-width: 700px
+		background: white
+		border: 1px solid #86867a
+	+mobile()
+		padding: 5px
+
+h1
+	display: inline-block
+	padding: 3px 10px
+	color: #ef957d
+
+	+desktop-tablet()
+		margin: 0 0 20px
+		font: bold 30px/100% $font
+	+mobile()
+		margin: 0 0 15px
+		font: bold 24px/100% $font
+
+
+
+
+
+.calculator
+	height: 100%
+
+	&__global-grid
+		display: flex
+		flex-wrap: wrap
+		width: 100%
+		height: 100%
+
+		+desktop-tablet()
+			padding: 0 10px 0 0
+
+	&__global-cell
+		display: block
+
+		&:first-child
+			text-align: center
+			+desktop-tablet()
+				padding: 0 20px 0 0
+				width: calc(100% - 280px)
+			+mobile()
+				width: 100%
+
+		&:last-child
+
+			+desktop-tablet()
+				position: relative
+				width: 280px
+				background: #eee
+
+			+mobile()
+				display: none
+
+
+	&__header
+		position: relative
+		height: 15%
+
+		+desktop-tablet()
+			padding: 1px 1px 8px
+		+mobile()
+			padding: 1px 1px 3px
+
+	&__cover
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		cursor: text
+		+desktop-tablet()
+			bottom: 8px
+		+mobile()
+			bottom: 3px
+
+	&__body
+		height: 85%
+
+
+	&__input
+		width: 100%
+		height: 100%
+		color: white
+		text-align: right
+		text-shadow: 0 0 1px black
+		background: #444
+
+		+desktop-tablet()
+			padding: 0 10px
+			border: 2px solid $grey1
+		+desktop()
+			font: 500 46px/100% arial
+		+tablet()
+			font: 500 38px/100% arial
+		+mobile()
+			padding: 0 5px
+			font: 500 30px/100% arial
+			border: 1px solid $grey1
+
+	&__grid
+		display: flex
+		flex-wrap: wrap
+		width: 100%
+		height: 100%
+
+	&__column
+
+		&:first-child
+			width: 75%
+
+			.calculator__cell
+				width: 33.33333%
+
+			.calculator__row
+				height: 20%
+
+				&:last-child
+
+					.calculator__cell
+
+						&:first-child
+							width: 66.66666%
+
+		&:last-child
+			width: 25%
+
+			.calculator__row
+				&:nth-child(1), &:nth-child(2), &:nth-child(3)
+					height: 20%
+				&:nth-child(4)
+					height: 40%
+
+			.calculator__cell
+				width: 100%
+
+	&__row
+		width: 100%
+		font-size: 0
+
+
+	&__cell
+		display: inline-block
+		padding: 1px
+		height: 100%
+		vertical-align: top
+
+	&__button
+		display: block
+		margin: 0
+		width: 100%
+		height: 100%
+		color: #444
+		text-align: center
+		border: 1px solid $grey1
+		border-radius: 3px
+		box-shadow: inset -3px -5px 10px 0 $grey1
+		transition: box-shadow 0.15s ease
+
+		+desktop-tablet()
+			font: 700 30px/100% arial
+		+desktop()
+			&:hover
+				box-shadow: inset -2px -4px 10px 0 #ccc
+		+mobile()
+			font: 700 24px/100% arial
+
+		&[data-event="del"]
+			padding-left: 5px
+
+		&:active
+			box-shadow: inset -1px -2px 10px 0 #888
+
+// Иконка удаления
+// ===============
+.icon-del
+	position: relative
+	margin: 0 auto
+	width: 24px
+	height: 16px
+	background: white
+	border: 2px solid #444
+
+	+desktop-tablet()
+		width: 24px
+		height: 16px
+	+mobile()
+		width: 20px
+		height: 14px
+
+	&:before, &:after
+		content: ''
+		position: absolute
+
+	&:before
+		top: -2px
+		bottom: -2px
+		left: -10px
+		border-right: 8px solid #444
+
+		+desktop-tablet()
+			border-top: 8px solid transparent
+			border-bottom: 8px solid transparent
+		+mobile()
+			border-top: 7px solid transparent
+			border-bottom: 7px solid transparent
+
+	&:after
+		top: 0px
+		bottom: 0px
+		left: -6px
+		border-right: 6px solid white
+
+		+desktop-tablet()
+			border-top: 6px solid transparent
+			border-bottom: 6px solid transparent
+		+mobile()
+			border-top: 5px solid transparent
+			border-bottom: 5px solid transparent
+
+	&__cross
+		position: absolute
+		top: 50%
+		left: 50%
+		margin: -4px 0 0 -5px
+		width: 8px
+		height: 8px
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			margin: -1px 0 0 -5px
+			width: 10px
+			height: 2px
+			background: #444
+
+		&:before
+			+rotate(45)
+		&:after
+			+rotate(-45)
+
+
+
+// Иконка разделения
+// =================
+.calculator-divide
+	position: relative
+	margin: 0 auto
+	height: 2px
+
+	+desktop-tablet()
+		width: 26px
+	+mobile()
+		width: 22px
+
+	&, &:before, &:after
+		background: #444
+
+	&:before, &:after
+		content: ''
+		position: absolute
+		left: calc(50% - 2.5px)
+		width: 5px
+		height: 5px
+		border-radius: 100%
+	&:before
+		+desktop-tablet()
+			top: -10px
+		+mobile()
+			top: -9px
+	&:after
+		+desktop-tablet()
+			bottom: -10px
+		+mobile()
+			bottom: -9px
+
+
+// Иконка умножения
+// =================
+.calculator-multiply
+	position: relative
+	margin: 0 auto
+	width: 20px
+	height: 20px
+
+	&:before, &:after
+		content: ''
+		position: absolute
+		background: #444
+
+		+desktop-tablet()
+			top: calc(50% - 1.5px)
+			left: calc(50% - 11px)
+			width: 22px
+			height: 3px
+		+mobile()
+			top: calc(50% - 1px)
+			left: calc(50% - 9px)
+			width: 18px
+			height: 2px
+
+	&:before
+		+rotate(45)
+	&:after
+		+rotate(-45)
+
+
+
+// История вычислений
+// ==================
+.calculator-history
+
+	+desktop-tablet()
+
+		&__container
+			position: absolute
+			top: 10px
+			left: 10px
+			right: 10px
+			bottom: 60px
+			overflow: hidden
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				bottom: 0
+				height: 40px
+				+grad( rgba(0,0,0,0),#eee )
+
+		&__heading
+			margin: 0 0 20px
+			font: 500 24px/100% arial
+			color: #444
+
+		&__list
+
+
+		&__item
+			font: 300 16px/100% arial
+			color: black
+
+			&--clear
+				color: #bababa
+
+			& + &
+				margin: 15px 0 0
+
+		&__clear
+
+			+desktop-tablet()
+				position: absolute
+				bottom: 10px
+				left: 10px
+				width: calc(100% - 20px)
+				height: 40px
+				font: 700 16px/100% arial
+				color: #444
+				text-transform: uppercase
+				background: white
+				border: 1px solid $grey1
+				border-radius: 3px
+				box-shadow: inset -3px -5px 10px 0 $grey1
+				transition: box-shadow 0.15s ease
+
+				&:hover
+					box-shadow: inset -2px -4px 10px 0 #ccc
+				&:active
+					box-shadow: inset -1px -2px 10px 0 #888
+
