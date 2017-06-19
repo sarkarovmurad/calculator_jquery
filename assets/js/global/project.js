@@ -47,8 +47,10 @@ $(document).ready(function($) {
 
 		// Фокус на поле ввода
 		input_focus: function(event) {
-			event.$input.focus();
-			event.$input[0].setSelectionRange(event.$input.val().length,event.$input.val().length);
+			if( $('body').width() > 960 ) {
+				event.$input.focus();
+				event.$input[0].setSelectionRange(event.$input.val().length,event.$input.val().length);
+			}
 		},
 
 		// Добавление цифры
@@ -58,6 +60,9 @@ $(document).ready(function($) {
 
 			// Нельзя делить на 0!
 			if( $self.text()==0 && parent.$input.val().slice(-1)=="/" ) {
+				return false;
+			}
+			if( $self.text()==0 && parent.$input.val().slice(-1)=="." ) {
 				return false;
 			}
 
@@ -169,9 +174,11 @@ $(document).ready(function($) {
 
 		// Добавления фокуса на поле ввода символов
 		focus_on_input: function(event) {
-			let parent = event.data.parent;
-			parent.$input.focus();
-			parent.$input[0].setSelectionRange(parent.$input.val().length,parent.$input.val().length);
+			if( $('body').width() > 960 ) {
+				let parent = event.data.parent;
+				parent.$input.focus();
+				parent.$input[0].setSelectionRange(parent.$input.val().length,parent.$input.val().length);
+			}
 		},
 
 		// Ввод символов с клавиатура
@@ -184,6 +191,8 @@ $(document).ready(function($) {
 				if( !(event.key>=0&&event.key<=9) ) {// Если это символы, получаемые при нажатии shift+цифра, то -> return false
 					return false;
 				} else if( (event.which==48 || event.which==96) && parent.$input.val().slice(-1)=="/" ) {// Нельзя делить на 0!
+					return false;
+				}  else if( (event.which==48 || event.which==96) && parent.$input.val().slice(-1)=="." ) {// Нельзя делить на 0!
 					return false;
 				} else {
 					// Если значение пустое, то удаляем из поля нолик перед вводом символов
